@@ -1,0 +1,33 @@
+# Name for this task
+taskName: 'Seller'
+description: 'Sells all chest content in radius'
+handItem: 'GOLD_INGOT'
+# RGB Colors for armor (https://rgbcolorcode.com/)
+armorColor: '255,215,0'
+robotName: '&f&l%playerName%&r''s &7&lSeller&r'
+script:
+  # Work types: [MINING, ATTACK, SELL, FISH]
+  workType: 'SELL'
+  workConfiguration:
+    # List of objects to interact with, could be a mob or block materials
+    # To add more than one object, use this formatting: 'zombie,skeleton,wither'
+    # To allow interaction with all materials, leave this as empty ( '' )
+    interactWith: 'CHEST'
+    # replant: true - This setting can be used with farming robots
+  # How frequent should this task be activated, in seconds
+  frequency: 3
+  # Interaction configuration
+  interaction:
+    # If 'ahead' is set to true, robot will only interact with object in-front of robot
+    ahead: false
+    # If 'ahead' is set to 'false', then radius will be used
+    radiusHandler:
+      # Radius size, in blocks, to each side. 5 means 5x5x5 (x, y, z) (125) blocks will be affected
+      radiusSize: 5
+  resourcesTransformation:
+    # Should gained resources, such as mined blocks or drops from mobs, be teleported to robot or drop at original location
+    teleportToRobot: false
+    # Should hopper detection be activated and move drops to a hopper under robot?
+    hopperDetection: false
+    # Should drops be automtically sold (disables 2 settings above for drops)
+    autoSellDrops: true
