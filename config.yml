@@ -1,0 +1,16 @@
+# AdvancedRobots
+# not finished 
+messages:
+  cannotPlaceHere:
+  - '&cCannot place a robot here!'
+items:
+  robot:
+    material: MONSTER_EGG
+    damage: 101
+    name: '&e&lRobot &7[Right-Click to Place]'
+    lore: []
+  task:
+    material: NAME_TAG
+    damage: 0
+    name: '&e&lRobot Task &f"%taskName%" &7[Right-Click Robot to apply]'
+    lore: []
