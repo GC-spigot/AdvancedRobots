@@ -1,4 +1,4 @@
-# AdvancedRobots
+[logo]: http://servers.advancedmarket.co/ar/arlogo.png "AdvancedRobots"
 AdvancedRobots is an extensive robots/minions plugin for SpigotMC
 
 
