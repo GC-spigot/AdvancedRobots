@@ -1,8 +1,25 @@
 # AdvancedRobots
-# not finished 
+# Made by GC
+#
+# Version: 1.0.1
+# Release date: 2019.11.08
+#
+# ** Commands and permissions
+# /ar give <player> [amount] - Give a number of robot spawn eggs;ar.admin
+# /ar reload - Reload plugin;ar.admin
+# /ar tasks - List robot tasks available;ar.admin
+# /ar givetask <player> <task name> [amount] - Give number of specific task to player;ar.admin
+
+# Some configurable settings are explained, others should be self-explanatory.
+# Contact "GC." on SpigotMC with any questions or bug reports.
+
+# Manage plugin commands
 messages:
   cannotPlaceHere:
-  - '&cCannot place a robot here!'
+    - '&cCannot place a robot here!'
+  placementOnCooldown:
+    - '&cYou must wait &l%timeRemaining%ms &ctill you can place another Robot!'
+
 items:
   robot:
     material: MONSTER_EGG
