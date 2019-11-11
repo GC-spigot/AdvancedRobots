@@ -1,8 +1,8 @@
 # AdvancedRobots
 # Made by GC
 #
-# Version: 1.0.1
-# Release date: 2019.11.08
+# Version: 1.0.5
+# Release date: 2019.11.11
 #
 # ** Commands and permissions
 # /ar give <player> [amount] - Give a number of robot spawn eggs;ar.admin
@@ -19,6 +19,79 @@ messages:
     - '&cCannot place a robot here!'
   placementOnCooldown:
     - '&cYou must wait &l%timeRemaining%ms &ctill you can place another Robot!'
+  noPermission:
+    - '&cYou don''t have permission!'
+
+# Settings for robots
+robots:
+  # Default name that robots use upon spawning
+  defaultName: '&f&l%playerName%''s &b&lRobot'
+  # Robot Managing inventory (Can be opened by right-clicking a robot)
+  managingInventory:
+    # Should robot managing inventory be enabled
+    enabled: true
+    name: "&cManage Robot"
+    size: 9
+    fill:
+      fillEmptyItems: true
+      material: STAINED_GLASS_PANE
+      damage: 15
+      name: ' '
+      lore: []
+    items:
+      0:
+        material: SKULL_ITEM
+        damage: 3
+        name: '&aChoose Robot''s Skin'
+        lore: []
+        # Type sets item behaviour upon player clicking it
+        type: 'skinSelector'
+      4:
+        material: ARMOR_STAND
+        damage: 0
+        name: '&cRobot''s Information'
+        lore:
+          - '&6&lx &eOwner: &f%owner%'
+          - '&6&lx &eTask: &f%task%'
+          - '&6&lx &eLocation: &f%x%x %y%y %z%z %world%'
+
+# Configuration for skin selector of robot skulls
+skinSelector:
+  skins:
+    angryRobot:
+      name: "Angry Robot"
+      # Name of player that uses this skin
+      playerSkinName: 'robot'
+      # Required permission to put this skin
+      permission: ''
+    minion:
+      name: "Minion"
+      playerSkinName: 'minions'
+      permission: ''
+    miner:
+      name: "Miner"
+      playerSkinName: 'miner'
+      permission: ''
+    golden:
+      name: "Golden"
+      playerSkinName: 'shiny'
+      permission: ''
+    astronaut:
+      name: "Astronaut"
+      playerSkinName: 'space'
+      permission: ''
+  # Skin Selector GUI name
+  inventoryName: '&cSkin Selector'
+  # Alias used as name to reset robot's skin
+  robotsOwnerAlias: 'Robot''s Owner'
+  # Should plugin attempt to match skin's dominant color for robot's armor
+  matchSkinForArmorColor: true
+  # Item used to preview skull in the selector
+  skinPreviewItem:
+    material: SKULL_ITEM
+    damage: 3
+    name: '&eClick to choose &6%skinName%'
+    lore: []
 
 items:
   robot:
