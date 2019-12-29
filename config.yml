@@ -1,18 +1,20 @@
 # AdvancedRobots
 # Made by GC
 #
-# Version: 1.0.5
-# Release date: 2019.11.11
+# Version: 1.1.5
+# Release date: 2019.12.29
 #
 # ** Commands and permissions
 # /ar give <player> [amount] - Give a number of robot spawn eggs;ar.admin
 # /ar reload - Reload plugin;ar.admin
 # /ar tasks - List robot tasks available;ar.admin
 # /ar givetask <player> <task name> [amount] - Give number of specific task to player;ar.admin
-
+#
 # Some configurable settings are explained, others should be self-explanatory.
 # Contact "GC." on SpigotMC with any questions or bug reports.
-
+#
+# Permission to limit robots per player is 'ar.limit.<amount>'
+#
 # Manage plugin commands
 messages:
   cannotPlaceHere:
@@ -21,6 +23,8 @@ messages:
     - '&cYou must wait &l%timeRemaining%ms &ctill you can place another Robot!'
   noPermission:
     - '&cYou don''t have permission!'
+  limitReached:
+    - '&cYou cannot place more than %limit% robots!'
 
 # Settings for robots
 robots:
@@ -46,6 +50,17 @@ robots:
         lore: []
         # Type sets item behaviour upon player clicking it
         type: 'skinSelector'
+      1:
+        material: COAL
+        damage: 0
+        name: '&aAdd Fuel to Robot'
+        lore:
+          - '&eRemaining time: &6%time%'
+          - ''
+          - '&7Robots require fuel cells to work.'
+          - '&7Click here to start adding fuel to this robot.'
+        # Type sets item behaviour upon player clicking it
+        type: 'robotFuel'
       4:
         material: ARMOR_STAND
         damage: 0
@@ -61,6 +76,7 @@ skinSelector:
     angryRobot:
       name: "Angry Robot"
       # Name of player that uses this skin
+      # Supports base64 format to use custom skins (e.g: https://minecraft-heads.com/custom-heads)
       playerSkinName: 'robot'
       # Required permission to put this skin
       permission: ''
@@ -93,6 +109,19 @@ skinSelector:
     name: '&eClick to choose &6%skinName%'
     lore: []
 
+# Configuration for fuel powered robots
+fuel-inventory:
+  inventoryName: '&bRobot Fuel'
+  confirmedMessage:
+    - '&eAdded &lx%amount% &d&lRobot Fuel Cell &7(%time%) &efuel to the robot.'
+  confirmItem:
+    material: STAINED_GLASS_PANE
+    damage: 5
+    name: '&aConfirm to add these fuel cells'
+    lore:
+      - '&eRemaining time: &6%time%'
+      - '&7Click to confirm and fuel the robot'
+
 items:
   robot:
     material: MONSTER_EGG
@@ -104,3 +133,16 @@ items:
     damage: 0
     name: '&e&lRobot Task &f"%taskName%" &7[Right-Click Robot to apply]'
     lore: []
+  fuel:
+    material: COAL
+    glow: true
+    damage: 0
+    name: '&d&lRobot Fuel Cell &7[Place in Robot]'
+    lore:
+      - '&7Open a robot and put the fuel in to add'
+      - '&b%time% &7to robot''s fuel.'
+    settings:
+      # How many seconds will 1 fuel cell add to robot?
+      seconds-to-add: 600
+      # Do robots require fuel cells to work?
+      robots-require-fuel: true
